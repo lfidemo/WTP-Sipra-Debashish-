@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#4b1018">
   <meta name="description" content="A royal wedding invitation celebrating the union of two families.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sipra &amp; Debashish – Wedding Invitation">
+  <meta property="og:description" content="With joyful hearts and divine blessings of our elders, we request the honour of your gracious presence.">
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <title>Sipra &amp; Debashish – Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +32,7 @@
         <div class="arch-in">
           <div class="door door-left"></div>
           <div class="door door-right"></div>
+          <img class="intro-logo" src="assets/logo.png" alt="" width="510" height="480">
         </div>
       </div>
     </div>
@@ -35,23 +43,27 @@
   <main id="mainContent">
     <section class="hero" id="home">
       <div class="hero-copy">
+        <img class="ganesha" src="assets/ganesha.png" alt="Lord Ganesha" onerror="this.remove()">
         <p class="sanskrit">॥ श्री गणेशाय नमः ॥</p>
-        <p class="label">With the blessings of the Almighty and our beloved elders</p>
+        <p class="hero-line">With the blessings of the Almighty<br>and our beloved elders</p>
         <p class="hero-sub">We are getting married</p>
         <h1 class="couple-names"><span id="brideName">Sipra</span><em>&amp;</em><span id="bridegroomName">Debashish</span></h1>
-        <p class="hero-date" id="heroDate">December 10 – 13, 2026</p>
-        <a class="scroll-cue" href="#scratch">Scroll to explore <span>↓</span></a>
+        <p class="hero-line hero-date" id="heroDate">December 10 – 13, 2026</p>
+        <a class="hero-line scroll-cue" href="#scratch">Scroll to explore <span>↓</span></a>
       </div>
     </section>
 
     <section class="section scratch-section" id="scratch">
       <div class="scratch-card">
-        <div class="scratch-reveal">
-          <h3 id="scratchDate">December 12, 2026</h3>
-          <p class="venue-name" id="scratchVenue">Casa Royal</p>
-          <p id="scratchCity">Cuttack</p>
+        <div class="scratch-reveal venue-panel" id="venue">
+          <span class="ornament">✦ ❧ ✦</span>
+          <p class="label">We can’t wait to celebrate with you</p>
+          <h2 id="scratchDate">Saturday, December 12, 2026</h2>
+          <h3 id="mainVenue">Casa Royal</h3>
+          <p id="mainVenueAddress">Barang, Cuttack</p>
+          <a class="gold-button map-link" id="mapLink" href="https://maps.app.goo.gl/f3amx9DQeHEj9ugQ6" target="_blank" rel="noopener">Open in Google Maps</a>
         </div>
-        <canvas id="scratchCanvas" aria-label="Scratch to reveal the wedding date"></canvas>
+        <canvas id="scratchCanvas" aria-label="Scratch to reveal the wedding date and venue"></canvas>
       </div>
     </section>
 
@@ -59,7 +71,7 @@
       <div class="countdown-inner">
         <span class="ornament">✦ ❧ ✦</span>
         <p class="label">The moment we have been waiting for</p>
-        <h2>Counting down<br>to our big day</h2>
+        <h2>Countdown</h2>
         <div class="countdown" aria-live="polite">
           <div><strong id="days">--</strong><span>Days</span></div><b>:</b>
           <div><strong id="hours">--</strong><span>Hours</span></div><b>:</b>
@@ -75,14 +87,13 @@
         <span class="paper-corner top-left">❧</span><span class="paper-corner top-right">❧</span>
         <p class="sanskrit">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥</p>
         <div class="divider"><span>✦</span></div>
-        <p class="invite-intro">With the blessings of the Almighty and our elders, we request the honour of your presence at the auspicious Shubh Vivah of</p>
+        <p class="invite-intro">With joyful hearts and divine blessings of our elders, we request the honour of your gracious presence at the Shubh Vivah of</p>
         <h2 id="inviteBride">Sipra Das</h2>
         <p class="family-line" id="brideParents" hidden></p>
         <div class="ampersand">&amp;</div>
         <h2 id="inviteGroom">Debashish Jena</h2>
         <p class="family-line" id="groomParents" hidden></p>
         <div class="divider"><span>✦</span></div>
-        <p class="invitation-quote">“With joyful hearts and the divine blessings of our elders, we invite you to celebrate love, sacred traditions, and the union of two families.”</p>
         <span class="paper-corner bottom-left">❧</span><span class="paper-corner bottom-right">❧</span>
       </div>
     </section>
@@ -97,22 +108,24 @@
     </section>
     <div id="eventsGrid"></div>
 
-    <section class="venue-section" id="venue">
-      <div class="venue-panel">
-        <span class="ornament">✦ ❧ ✦</span>
-        <p class="label">We can’t wait to celebrate with you</p>
-        <h2>Celebration venue</h2>
-        <h3 id="mainVenue">Casa Royal</h3>
-        <p id="mainVenueAddress">Barang, Cuttack</p>
-        <a class="gold-button map-link" id="mapLink" href="https://maps.app.goo.gl/f3amx9DQeHEj9ugQ6" target="_blank" rel="noopener">Open in Google Maps</a>
+    <section class="gallery-section" id="gallery">
+      <div class="gal-toran" aria-hidden="true"></div>
+      <div class="gal-petals" id="galPetals" aria-hidden="true"></div>
+      <div class="gal-heading">
+        <p class="gal-script">Gallery of</p>
+        <h2 id="galNames">Sipra &amp; Debashish</h2>
       </div>
+      <div class="gal-stage" id="galStage" role="region" aria-label="Photo gallery" tabindex="0"></div>
+      <div class="gal-ribbon" aria-live="polite"><span id="galCaption"></span></div>
+      <div class="gal-nav"><button type="button" id="galPrev" aria-label="Previous photo">&#8249;</button><button type="button" id="galNext" aria-label="Next photo">&#8250;</button></div>
+      <div class="gal-band" aria-hidden="true"></div>
     </section>
 
     <footer class="footer">
-      <div class="footer-monogram" id="monogram">S &amp; D</div>
-      <p class="footer-quote">“Two souls with but a single thought, two hearts that beat as one.”</p>
-      <p class="footer-date" id="footerDate"></p>
-      <p class="footer-note">We eagerly await your gracious presence and heartfelt blessings.</p>
+      <img class="footer-logo" src="assets/logo.png" alt="Sipra and Debashish wedding logo" width="510" height="480" loading="lazy" decoding="async">
+      <p class="footer-quote">WARNING⚠️ Unlimited smiles, good food, crazy dancing, happy tears, and a whole lot of wedding madness ahead! We said YES to forever, now all we’re waiting for is YOU!!</p>
+      <p class="footer-regards">With warm regards</p>
+      <p class="footer-family">Das &amp; Jena Family</p>
       <span class="footer-flourish">✦ ❧ ✦</span>
     </footer>
   </main>

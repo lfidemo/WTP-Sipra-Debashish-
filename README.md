@@ -31,3 +31,6 @@ The included `assets/royal-stage.jpg` is a custom-generated decorative backgroun
 - `js/script.js` — editable wedding data and interactions
 - `assets/sahiba.mp3` — background song
 - `assets/royal-stage.jpg` — royal wedding background (optimized JPEG)
+
+## Scenic event themes
+Sangeet pages use the blush-stage artwork and Haldi / Mehendi pages use the floral-canopy artwork, both in `assets/themes/` (each split into top, stretchable middle and bottom pieces, see "Scenic themes" in `css/style.css`). To swap the artwork, replace those image files.

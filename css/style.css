@@ -9,6 +9,8 @@ button,a{font:inherit}
 .label{font:600 12.5px/1.6 var(--sans);letter-spacing:.14em;text-transform:uppercase;margin:0}
 
 /* ---------- Music ---------- */
+.music-toggle.hint{animation:mpulse 1.9s ease-out infinite}
+@keyframes mpulse{0%{box-shadow:0 5px 20px #26080b40,0 0 0 0 #e8c982cc}70%{box-shadow:0 5px 20px #26080b40,0 0 0 16px #e8c98200}100%{box-shadow:0 5px 20px #26080b40,0 0 0 0 #e8c98200}}
 .music-toggle{position:fixed;z-index:30;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));width:44px;height:44px;border-radius:50%;border:1px solid #d9bd7b;background:#4b1018ee;color:#f8e8bf;font-size:20px;cursor:pointer;box-shadow:0 5px 20px #26080b40;opacity:0;pointer-events:none;transition:opacity .6s}
 body.opened .music-toggle{opacity:1;pointer-events:auto}
 
@@ -41,6 +43,9 @@ linear-gradient(90deg,#0d403f,#146560 50%,#0d403f)}
 background:radial-gradient(circle,#8a1f2b 0 18%,#f0d08c 19% 24%,#8a1f2b 25% 40%,#f0d08c 41% 45%,#146560 46% 70%,#f0d08c 71% 76%,transparent 77%)}
 .door-left{left:0;transform-origin:left center}.door-left:before{border-top-left-radius:calc(var(--w)/2 - 30px)}.door-left:after{right:-60px}
 .door-right{right:0;transform-origin:right center}.door-right:before{border-top-right-radius:calc(var(--w)/2 - 30px)}.door-right:after{left:-60px}
+.intro-logo{position:absolute;z-index:3;left:50%;top:50%;box-sizing:border-box;width:clamp(108px,36%,136px);height:auto;aspect-ratio:1;object-fit:contain;padding:16px;transform:translate(-50%,-50%);pointer-events:none;border-radius:50%;background:radial-gradient(circle,#7a1f2b,#3b0c14);box-shadow:0 0 0 2px #d9b469,0 0 0 5px #3b0c14,0 0 0 6px #d9b46988,0 8px 22px #000a}
+.intro.play .intro-logo{position:absolute;z-index:3;left:50%;top:50%;box-sizing:border-box;width:clamp(108px,36%,136px);height:auto;aspect-ratio:1;object-fit:contain;padding:16px;transform:translate(-50%,-50%);pointer-events:none;border-radius:50%;background:radial-gradient(circle,#7a1f2b,#3b0c14);box-shadow:0 0 0 2px #d9b469,0 0 0 5px #3b0c14,0 0 0 6px #d9b46988,0 8px 22px #000a}
+@keyframes logo-out{to{opacity:0;transform:translate(-50%,-50%) scale(.85)}}
 .band{position:absolute;z-index:3;left:0;right:0;bottom:0;height:30px;border-top:2px solid #d9b469;background:linear-gradient(135deg,#d9b469 25%,transparent 25%) -15px 0/30px 30px,linear-gradient(225deg,#d9b469 25%,transparent 25%) -15px 0/30px 30px,#26070c}
 /* timeline: 0s toran + gate appear, 1.2s doors open, 2.5s gateway eases forward, 3.1s dissolve into the invitation */
 .intro.play{animation:intro-out 1.3s ease-in-out 3.1s forwards}
@@ -63,7 +68,7 @@ background:radial-gradient(circle,#8a1f2b 0 18%,#f0d08c 19% 24%,#8a1f2b 25% 40%,
 body.opening .hero-copy>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
 body.opening .hero-copy>:nth-child(1){animation-delay:.1s}body.opening .hero-copy>:nth-child(2){animation-delay:.25s}
 body.opening .hero-copy>:nth-child(3){animation-delay:.4s}body.opening .hero-copy>:nth-child(4){animation-delay:.55s}
-body.opening .hero-copy>:nth-child(5){animation-delay:.7s}body.opening .hero-copy>:nth-child(6){animation-delay:.85s}
+body.opening .hero-copy>:nth-child(5){animation-delay:.7s}body.opening .hero-copy>:nth-child(6){animation-delay:.85s}body.opening .hero-copy>:nth-child(7){animation-delay:1s}
 @keyframes rise{to{opacity:1;transform:none}}
 
 /* ---------- Dashboard ---------- */
@@ -71,13 +76,14 @@ body.opening .hero-copy>:nth-child(5){animation-delay:.7s}body.opening .hero-cop
 background:linear-gradient(#2b090b22,#2b090b44),url('../assets/royal-stage.jpg') center/cover no-repeat}
 .hero-copy{max-width:640px;padding:70px 24px 40px}
 .sanskrit{font-family:'Noto Serif Devanagari',serif;color:#7a3a1e;line-height:2;font-size:18px;margin:0 0 14px}
-.hero .label{color:#5e3a22;max-width:420px;margin:0 auto}
+.ganesha{display:block;height:clamp(66px,19vw,96px);width:auto;margin:0 auto 10px;filter:drop-shadow(0 1px 1px #50200a73)}
+.hero-line{font:600 clamp(9.5px,3.1vw,15px)/1.8 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#5e3a22;margin:0}
 .hero-sub{font:italic 600 26px/1.2 var(--serif);color:#6b4a2a;margin:22px 0 0}
+.hero-line:not(.scroll-cue):not(.hero-date){white-space:nowrap}
 .couple-names{font:400 clamp(58px,9vw,100px)/1 var(--script);color:#6b1c25;margin:10px 0 20px;text-shadow:0 2px 0 #f8e6c1}
 .couple-names span{display:block}
 .couple-names em{font:italic 600 34px/1.4 var(--serif);display:block;color:#98692a}
-.hero-date{font:600 15px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#5e3a22;margin:0}
-.scroll-cue{display:inline-flex;flex-direction:column;align-items:center;gap:6px;margin-top:44px;color:#5e3a22;text-decoration:none;font:500 13px var(--sans);letter-spacing:.12em}
+.scroll-cue{display:inline-flex;flex-direction:column;align-items:center;gap:6px;margin-top:44px;text-decoration:none}
 .scroll-cue span{font-size:22px;animation:bob 1.6s infinite}
 @keyframes bob{50%{transform:translateY(6px)}}
 
@@ -88,20 +94,15 @@ background:linear-gradient(#2b090b22,#2b090b44),url('../assets/royal-stage.jpg')
 .section-heading h2,.countdown-inner h2,.venue-panel h2{font:600 clamp(40px,6vw,60px)/1.08 var(--serif);color:#57202a;margin:12px 0}
 .lead{font:500 20px/1.55 var(--serif);color:var(--muted);margin:0}
 .scratch-section{background:#f4e8d4;padding:84px 22px}
-.scratch-card{position:relative;width:min(500px,90vw);height:330px;margin:auto;padding:18px;background:#7b2029;box-shadow:0 15px 40px #52201930;border:5px double #d7b46c;outline:1px solid #9e713a;outline-offset:7px;overflow:hidden}
-.scratch-reveal{position:absolute;inset:18px;background:radial-gradient(#fff9e9,#f0dfbd);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid #c39b57;padding:12px}
-.scratch-reveal h3{font:600 44px/1.1 var(--serif);color:#6b1c25;margin:0 0 10px}
-.scratch-reveal p{margin:2px 0;color:var(--ink)}
-.scratch-reveal .label{color:#8d6428}
-.scratch-reveal>p:last-child{font-size:15px}
-.rose{font-size:26px;color:#a83d43}
-.venue-name{font:600 26px var(--serif);color:#6d4723}
-#scratchCanvas{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);touch-action:none;cursor:crosshair}
-
+.scratch-card{position:relative;width:min(560px,94vw);margin:auto;padding:18px;background:#7b2029;box-shadow:0 15px 40px #52201930;border:5px double #d7b46c;outline:1px solid #9e713a;outline-offset:7px;overflow:hidden}
+.scratch-reveal.venue-panel{position:relative;max-width:none;margin:0;outline:0;outline-offset:0;border:1px solid #c39b57;padding:44px 22px}
+.scratch-reveal h2{text-wrap:balance}
+#scratchCanvas{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);touch-action:none;cursor:crosshair;transition:opacity .7s ease}
+#scratchCanvas.cleared{opacity:0;pointer-events:none}
 .micro-note{text-align:center;color:var(--muted);font-size:14px;margin:26px 0 0}
 
 .countdown-section{background:linear-gradient(135deg,#3b0c14,#6e1b27);color:#f8e9c8;padding:92px 20px;text-align:center}
-.countdown-inner .label{color:#e3c585}
+.countdown-inner .label{font:italic 600 22px/1.4 var(--serif);letter-spacing:0;text-transform:none;color:#ead7b0}
 .countdown-inner .ornament{color:#d2ad68}
 .countdown-inner h2{color:#fff0d0}
 .countdown{display:flex;justify-content:center;align-items:flex-start;gap:clamp(8px,3vw,28px);margin:40px auto 22px}
@@ -118,11 +119,10 @@ background:linear-gradient(#2b090b22,#2b090b44),url('../assets/royal-stage.jpg')
 .invitation-paper .sanskrit{font-size:17px;margin:0}
 .divider{display:flex;align-items:center;gap:15px;color:#a97c3c;margin:26px auto;max-width:250px}
 .divider:before,.divider:after{content:"";height:1px;background:#d1b27c;flex:1}
-.invite-intro{font:500 21px/1.6 var(--serif);color:#5c4632;max-width:560px;margin:0 auto}
+.invite-intro,.family-line{font:italic 500 21px/1.65 var(--serif);color:#6b5238;max-width:560px;margin:0 auto}
 .invitation-paper h2{font:400 clamp(50px,9vw,62px)/1.15 var(--script);color:#74222b;margin:14px 0 4px}
-.family-line{font:500 18px/1.55 var(--serif);color:#5c4632;max-width:440px;margin:0 auto}
+.family-line{max-width:460px}
 .ampersand{font:italic 600 32px var(--serif);color:#98692a;margin:12px}
-.invitation-quote{font:italic 500 21px/1.65 var(--serif);color:#6b5238;max-width:560px;margin:30px auto 0}
 
 .events-section{background:#fbf3e3;padding-bottom:64px;margin-bottom:0}
 .venue-section{padding:96px 20px;background:linear-gradient(#390c14d9,#390c14e8),url('../assets/royal-stage.jpg') center 65%/cover}
@@ -133,14 +133,14 @@ background:linear-gradient(#2b090b22,#2b090b44),url('../assets/royal-stage.jpg')
 .gold-button:hover{transform:translateY(-3px);filter:brightness(1.1)}
 .map-link{margin-top:24px}
 .footer{background:#310a10;color:#ecdab4;text-align:center;padding:64px 22px 48px}
-.footer-monogram{font:400 56px var(--script);color:#e2bf76}
-.footer-quote{font:italic 500 24px/1.5 var(--serif);margin:12px auto 22px;max-width:560px}
-.footer-date{font:600 13px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#d9bc7e;margin:0}
-.footer-note{font:500 19px/1.55 var(--serif);color:#d8c6a6;max-width:520px;margin:22px auto}
+.footer-logo{display:block;width:clamp(150px,44vw,200px);height:auto;margin:0 auto}
+.footer-quote{font:italic 500 24px/1.5 var(--serif);margin:26px auto 0;max-width:560px}
+.footer-regards{font:italic 500 22px/1.5 var(--serif);color:#d8c6a6;margin:34px 0 4px}
+.footer-family{font:italic 600 28px/1.35 var(--serif);color:#e2bf76;margin:0 0 28px}
 .footer-flourish{display:block;color:#c39a56;font-size:22px}
 
 /* ---------- Event pages ---------- */
-.event-page{content-visibility:auto;contain-intrinsic-size:auto 780px;position:relative;overflow:hidden;min-height:92svh;display:grid;place-items:center;padding:110px 20px 90px;background:var(--bg);color:var(--ink);isolation:isolate}
+.event-page{position:relative;overflow:hidden;min-height:92svh;display:grid;place-items:center;padding:110px 20px 90px;background:var(--bg);color:var(--ink);isolation:isolate}
 .event-page:before,.event-page:after{content:"";position:absolute;left:0;right:0;pointer-events:none;z-index:-1}
 .ev-deco{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
 .p{position:absolute;display:block;left:var(--x);top:-8%;width:var(--s);height:var(--s);opacity:0;animation:fall var(--d) linear var(--w) infinite}
@@ -189,28 +189,91 @@ background:linear-gradient(#2b090b22,#2b090b44),url('../assets/royal-stage.jpg')
 .t-wedding{--bg:radial-gradient(ellipse at 50% 0,#a8283c55,transparent 60%),linear-gradient(180deg,#5a0f1c,#7f1727 55%,#4b0c18);--ink:#fff0d2;--head:#f3d792;--accent:#f0cf86;--card:#3b0a14cc;--line:#e1b96a;--shadow:#0009;--btn:linear-gradient(135deg,#d8ae5c,#b98a45);--btn-ink:#3b0a14}
 .t-wedding .ev-card{border-radius:240px 240px 6px 6px;padding-top:92px}
 .t-wedding .ev-medal{margin-top:-140px}
-.t-wedding:before{top:0;bottom:0;opacity:.85;background:linear-gradient(#fff 0 0) 6% 0/2px 38% no-repeat,linear-gradient(#fff 0 0) 94% 0/2px 46% no-repeat,radial-gradient(circle at 50% 50%,#fff8e6 0 3.5px,transparent 4.5px) 6% 0/12px 14px repeat-y,radial-gradient(circle at 50% 50%,#fff8e6 0 3.5px,transparent 4.5px) 94% 0/12px 14px repeat-y;-webkit-mask:linear-gradient(90deg,#000 0 12%,transparent 12% 88%,#000 88%);mask:linear-gradient(90deg,#000 0 12%,transparent 12% 88%,#000 88%);transform-origin:top;animation:sway 6s ease-in-out infinite alternate;background-blend-mode:normal}
+.t-wedding:before{top:0;bottom:0;opacity:.85;background:linear-gradient(#fff 0 0) 3% 0/2px 38% no-repeat,linear-gradient(#fff 0 0) 97% 0/2px 46% no-repeat,radial-gradient(circle at 50% 50%,#fff8e6 0 3.5px,transparent 4.5px) 3% 0/12px 14px repeat-y,radial-gradient(circle at 50% 50%,#fff8e6 0 3.5px,transparent 4.5px) 97% 0/12px 14px repeat-y;-webkit-mask:linear-gradient(90deg,#000 0 12%,transparent 12% 88%,#000 88%);mask:linear-gradient(90deg,#000 0 12%,transparent 12% 88%,#000 88%);transform-origin:top;animation:sway 6s ease-in-out infinite alternate;background-blend-mode:normal}
 @keyframes sway{to{transform:skewX(2deg)}}
 .t-wedding:after{bottom:0;height:90px;background:repeating-linear-gradient(90deg,#d8ae5c 0 2px,transparent 2px 24px),linear-gradient(transparent,#2b060d)}
 .t-wedding .p{border-radius:70% 0 70% 0;background:linear-gradient(135deg,#d93a52,#8f1327)}
 
 /* Reception: midnight, champagne gold, light beams, sparkles, bubbles */
-.t-reception{--bg:radial-gradient(ellipse at 50% 0,#2b3a8a66,transparent 60%),linear-gradient(180deg,#0a0e2e,#141a46 60%,#080b24);--ink:#f6ead0;--head:#f0dba6;--accent:#e9cf93;--card:#ffffff0f;--line:#e9cf9388;--shadow:#000a;--btn:transparent;--btn-ink:#f0dba6}
+.t-reception{--bg:#000;--ink:#f6ead0;--head:#f0dba6;--accent:#e9cf93;--card:#ffffff0f;--line:#e9cf9388;--shadow:#000a;--btn:transparent;--btn-ink:#f0dba6}
 .t-reception:before{top:0;height:100%;opacity:.5;background:conic-gradient(from 160deg at 50% -5%,transparent 0 6%,#e9cf9333 10%,transparent 14%,#e9cf9322 20%,transparent 24%,#e9cf9333 32%,transparent 36%)}
 .t-reception:after{top:0;height:70px;background:linear-gradient(#e9cf93,#e9cf93) 50% 0/1px 48px no-repeat,radial-gradient(circle at 50% 54px,#f6e3ae 0 5px,#e9cf93 6px 7px,transparent 8px),radial-gradient(circle at 38% 52px,#e9cf93 0 3px,transparent 4px),radial-gradient(circle at 62% 52px,#e9cf93 0 3px,transparent 4px)}
 .t-reception .p{border-radius:50%;border:1px solid #f0dba6aa;background:#f0dba622}
 .t-reception .tw{border:0;border-radius:0;background:none;color:#f6e3ae;font-size:var(--s);width:auto;height:auto;line-height:1;top:var(--y);bottom:auto;animation:twinkle var(--d) ease-in-out var(--w) infinite}
 
+
+/* ===== Scenic themes built from the reference artwork: Sangeet (blush stage), Haldi & Mehendi (floral canopy) =====
+   Each page background = top slice + stretchable middle band + bottom slice, so the artwork keeps its proportions at any height. */
+.t-sangeet:before,.t-sangeet:after,.t-haldi:before,.t-haldi:after,.t-mehendi:before,.t-mehendi:after{content:none;animation:none}
+.event-page.t-sangeet,.event-page.t-haldi,.event-page.t-mehendi{--bw:min(100vw,560px);padding:calc(var(--bw)*var(--tr) + 22px) 20px calc(var(--bw)*var(--br) + 18px);min-height:calc(var(--bw)*1.5)}
+.event-page.t-sangeet{--tr:.452;--br:.215;--th:.4517;--bh:.9102;--bg:#fcf5ee;--ink:#5a3b3a;--head:#7b3a47;--accent:#a8782f;--line:#d8b88a;--btn:#b0803c;--btn-ink:#fff8ea}
+.event-page.t-haldi{--tr:.476;--br:.235;--th:.4755;--bh:.8288;--bg:#f3eae1;--ink:#4e3622;--head:#8a5200;--accent:#a8680a;--line:#e0b86a;--btn:#c98a14;--btn-ink:#fff}
+.event-page.t-mehendi{--tr:.476;--br:.235;--th:.4755;--bh:.8288;--bg:#f3eae1;--ink:#33422a;--head:#3f6b3f;--accent:#8f6a24;--line:#c9b06a;--btn:#4f7d45;--btn-ink:#fff}
+.t-sangeet .ev-card,.t-haldi .ev-card,.t-mehendi .ev-card{width:min(440px,80%);text-shadow:0 0 5px var(--bg),0 0 10px var(--bg),0 0 14px var(--bg);background:none;border:0;outline:0;box-shadow:none;backdrop-filter:none;padding-top:0}
+.t-sangeet .ev-medal,.t-haldi .ev-medal,.t-mehendi .ev-medal{display:none}
+.ev-photo i{position:absolute;left:50%;width:var(--bw);transform:translateX(-50%);background-size:100% 100%;background-repeat:no-repeat}
+.ev-photo .bg-top{top:0;height:calc(var(--bw)*var(--th))}
+.ev-photo .bg-mid{top:calc(var(--bw)*var(--th) - 1px);bottom:calc(var(--bw)*var(--bh) - 1px)}
+.ev-photo .bg-bot{bottom:0;height:calc(var(--bw)*var(--bh))}
+.t-sangeet .bg-top{background-image:url('../assets/themes/sangeet-top.jpg')}.t-sangeet .bg-mid{background-image:url('../assets/themes/sangeet-mid.jpg')}.t-sangeet .bg-bot{background-image:url('../assets/themes/sangeet-bot.jpg')}
+.t-haldi .bg-top,.t-mehendi .bg-top{background-image:url('../assets/themes/floral-top.jpg')}.t-haldi .bg-mid,.t-mehendi .bg-mid{background-image:url('../assets/themes/floral-mid.jpg')}.t-haldi .bg-bot,.t-mehendi .bg-bot{background-image:url('../assets/themes/floral-bot.jpg')}
+@media(min-width:561px){.ev-photo i{-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}}
+
+/* ---------- Gallery: Royal coverflow of Rajasthani arch frames ---------- */
+.gallery-section{content-visibility:auto;contain-intrinsic-size:auto 900px;position:relative;overflow:hidden;padding:128px 0 84px;isolation:isolate;text-align:center;--w:clamp(190px,60vw,300px);
+background:radial-gradient(ellipse at 50% 30%,#fdf6e8,#f6e8cf 75%)}
+.gal-toran{position:absolute;top:0;left:0;right:0;height:92px;transform-origin:top;animation:toran-sway 3.5s ease-in-out infinite alternate;
+background:linear-gradient(#b98a45,#b98a45) 0 10px/100% 2px no-repeat,radial-gradient(circle at 50% 30px,#ff8a00 0 9px,#ffc400 10px 13px,transparent 14px) 0 0/34px 92px repeat-x,radial-gradient(ellipse 6px 17px at 50% 58px,#2f7a3a 0 98%,transparent) 17px 0/34px 92px repeat-x,radial-gradient(circle at 50% 80px,#e8c982 0 4px,transparent 5px) 0 0/68px 92px repeat-x}
+.gal-petals{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.gal-petals i{position:absolute;top:-6%;left:var(--x);width:var(--s);height:calc(var(--s)*1.5);border-radius:60% 0 60% 0;background:linear-gradient(135deg,#f0829f,#e85c86);opacity:0;animation:fall var(--d) linear var(--wt) infinite}
+.gallery-section:not(.live) .gal-petals i,.gallery-section:not(.live) .gal-toran{animation-play-state:paused}
+.gal-heading{padding:0 18px;margin-bottom:34px}
+.gal-script{font:400 clamp(30px,7vw,38px)/1.2 var(--script);color:#7b2230;margin:0 0 6px}
+.gal-heading h2{font:700 clamp(22px,6.2vw,38px)/1.2 var(--serif);letter-spacing:.06em;text-transform:uppercase;color:#7b1020;margin:0}
+.gal-stage{position:relative;height:calc(var(--w)*1.25 + 44px);perspective:1100px;touch-action:pan-y;user-select:none;outline-offset:-4px}
+.gal-slide{position:absolute;left:50%;top:14px;width:var(--w);margin:0 0 0 calc(var(--w)/-2);cursor:pointer;transition:transform .8s cubic-bezier(.22,.7,.2,1),opacity .6s ease,filter .6s ease;will-change:transform}
+.gal-slide[data-pos="0"]{transform:none;z-index:5;cursor:default}
+.gal-slide[data-pos="1"]{transform:translateX(64%) translateZ(-130px) rotateY(-30deg) scale(.84);z-index:4;filter:brightness(.8) saturate(.9)}
+.gal-slide[data-pos="-1"]{transform:translateX(-64%) translateZ(-130px) rotateY(30deg) scale(.84);z-index:4;filter:brightness(.8) saturate(.9)}
+.gal-slide[data-pos="2"]{transform:translateX(108%) translateZ(-250px) rotateY(-36deg) scale(.68);z-index:3;opacity:.7;filter:brightness(.7) saturate(.85)}
+.gal-slide[data-pos="-2"]{transform:translateX(-108%) translateZ(-250px) rotateY(36deg) scale(.68);z-index:3;opacity:.7;filter:brightness(.7) saturate(.85)}
+.gframe{position:relative;padding:10px;border-radius:999px 999px 12px 12px;background:linear-gradient(145deg,#f0d08c,#c9953f 50%,#e8c982);box-shadow:0 18px 38px #5a2a1a55}
+.gframe img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:999px 999px 4px 4px;box-shadow:0 0 0 3px #7b1020,0 0 0 4px #e0b865;background:#4b1018;pointer-events:none}
+.gal-ribbon{margin:26px auto 0;display:table}
+.gal-ribbon span{display:block;padding:9px 40px;background:#7b1020;color:#f4d98f;font:italic 600 clamp(19px,5vw,23px)/1.3 var(--serif);clip-path:polygon(0 0,100% 0,calc(100% - 15px) 50%,100% 100%,0 100%,15px 50%);transition:opacity .35s ease}
+.gal-ribbon span.fade{opacity:0}
+.gal-nav{display:flex;justify-content:center;gap:12px;margin-top:22px}
+.gal-nav button{width:60px;height:46px;border:0;border-radius:23px;background:linear-gradient(135deg,#d9a53f,#b98225);color:#4b1018;font:700 30px/1 var(--serif);cursor:pointer;box-shadow:0 6px 16px #7b4a1244;transition:transform .2s,filter .2s;padding:0 0 4px}
+.gal-nav button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.gal-band{position:absolute;left:0;right:0;bottom:0;height:30px;border-top:2px solid #d9b469;background:linear-gradient(135deg,#d9b469 25%,transparent 25%) -15px 0/30px 30px,linear-gradient(225deg,#d9b469 25%,transparent 25%) -15px 0/30px 30px,#26070c}
+@media(min-width:700px){.gallery-section{--w:300px}}
+
 /* ---------- Responsive ---------- */
 @media(max-width:850px){.section{padding:80px 18px}.hero{min-height:700px}}
 @media(max-width:560px){
+.scratch-reveal.venue-panel{padding:38px 10px}
 .ev-card{backdrop-filter:none}.t-sangeet:after{animation:none}.t-wedding:before{animation:none}
-.hero{height:95vh;height:95svh}.hero-copy{padding-top:60px}.couple-names{font-size:62px}.hero .label{font-size:11.5px;letter-spacing:.1em}
-.section{padding:70px 17px}.scratch-card{height:300px}.scratch-reveal h3{font-size:36px}
+.hero{height:95vh;height:95svh}.hero-copy{padding-top:60px}.couple-names{font-size:62px}
+.section{padding:70px 17px}
 .countdown div{min-width:54px}.countdown span{font-size:11px;letter-spacing:.08em}
 .invitation-paper{padding:56px 22px}.venue-panel{padding:46px 18px}.venue-panel h3{font-size:32px}
-.event-page{padding:104px 16px 72px}.ev-card{padding:44px 20px 38px}.t-wedding .ev-card{border-radius:200px 200px 6px 6px}
 .t-wedding:before{opacity:.6}}
-@media(max-width:360px){.couple-names{font-size:54px}.countdown{gap:5px}.countdown div{min-width:46px}.countdown strong{font-size:34px}.countdown>b{font-size:24px}.countdown span{font-size:10.5px;letter-spacing:.04em}.scratch-card{height:270px}.scratch-reveal h3{font-size:32px}.invitation-paper{padding:50px 16px}.ev-card{padding:42px 16px 34px}.ev-info dd{font-size:19px}}
+/* Event pages on phones: medal sits inside the card, evenly spaced rows, balanced text */
+@media(max-width:560px){
+.event-page{min-height:0;padding:100px 26px 68px}
+.ev-card{padding:34px 20px 32px;outline-offset:6px}
+.ev-medal{margin:0 auto 14px;width:72px;height:72px;font-size:34px}
+.ev-card h3{font-size:40px;text-wrap:balance}
+.ev-tag{font-size:20px;margin-bottom:20px;text-wrap:balance}
+.ev-info{gap:0;padding-top:0;margin-bottom:26px}
+.ev-info>div{padding:14px 0}
+.ev-info>div+div{border-top:1px solid var(--line)}
+.ev-info dd{font-size:19px;text-wrap:balance}
+.ev-map{display:block;width:100%;max-width:280px;margin:0 auto;padding:14px 10px}
+.t-wedding .ev-card{border-radius:170px 170px 6px 6px;padding-top:44px}
+.t-wedding .ev-medal{margin-top:0}
+}
+@media(max-width:360px){.scratch-reveal .gold-button{padding:14px 16px;letter-spacing:.07em;font-size:12px}.couple-names{font-size:54px}.countdown{gap:5px}.countdown div{min-width:46px}.countdown strong{font-size:34px}.countdown>b{font-size:24px}.countdown span{font-size:10.5px;letter-spacing:.04em}.invitation-paper{padding:50px 16px}.ev-card{padding:32px 14px 30px}.event-page{padding-left:22px;padding-right:22px}.ev-info dd{font-size:18px}}
 @media(max-height:480px) and (orientation:landscape){.intro{padding:70px 0 40px}.gate{--w:calc((100svh - 140px)*.62);height:calc(100svh - 140px)}.hero{height:auto;min-height:100svh;padding:30px 0}.hero-copy{padding-top:30px}.couple-names{font-size:56px}.event-page{min-height:0;padding:130px 20px 70px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.hero-copy>*{opacity:1;transform:none}.p{display:none}}
+@media(prefers-reduced-motion:reduce){.gal-row{overflow-x:auto}.gal-track{transform:none!important}*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.hero-copy>*{opacity:1;transform:none}.p{display:none}}
+.t-sangeet .ev-map,.t-haldi .ev-map,.t-mehendi .ev-map{text-shadow:none}
