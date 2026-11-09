@@ -29,7 +29,7 @@ const $ = (id) => document.getElementById(id);
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* Per-theme floating decoration: [count, size range, duration range, extra class, content] */
-const PHOTO_THEMES = ["sangeet", "haldi", "mehendi"]; // these use the artwork in assets/themes instead of floating particles
+const PHOTO_THEMES = ["sangeet", "haldi", "mehendi", "wedding", "reception"]; // these use the artwork in assets/themes instead of floating particles
 const PARTICLES = {
   mehendi:  {n:18, s:[10,16], d:[9,15],  cls:""},
   haldi:    {n:22, s:[10,18], d:[8,14],  cls:""},
@@ -58,7 +58,10 @@ function applyWeddingDetails(){
   set("heroDate", WEDDING.dateRange);
   set("scratchDate", WEDDING.dateLabel);
   set("inviteGroom", WEDDING.groomFull); set("inviteBride", WEDDING.brideFull);
-  ["groomParents","brideParents"].forEach(id => { set(id, WEDDING[id] ? `(${WEDDING[id]})` : ""); $(id).hidden = !WEDDING[id]; });
+  // keep each parent's title + full name together on one line (never split "Mr. / Hemant Kumar Das"); lines break only at the "&"
+  const NB = "\u00a0";
+  const tidy = t => t.split(" & ").map(p => p.replace(/(Mrs?\.|Dr\.)(.*)$/, m => m.replace(/ /g, NB))).join(NB + "& ");
+  ["groomParents","brideParents"].forEach(id => { set(id, WEDDING[id] ? `(${tidy(WEDDING[id])})` : ""); $(id).hidden = !WEDDING[id]; });
   set("galNames", `${WEDDING.bride} & ${WEDDING.groom}`);
   set("mainVenue", WEDDING.venue); set("mainVenueAddress", WEDDING.venueAddress);
   $("mapLink").href = WEDDING.mapUrl;
@@ -196,7 +199,7 @@ if ("IntersectionObserver" in window) {
 /* Gallery: royal coverflow. The centre arch is in focus, neighbours are angled behind it. Auto-plays, swipe / arrows / tap a side photo to move. */
 const GALLERY = [
   ["g2", "Forever Begins", "Sipra and Debashish together"], ["g1", "Golden Hour", "Sipra and Debashish at sunset"], ["g3", "Rings & Mehendi", "Sipra and Debashish showing their rings and mehendi"],
-  ["g4", "Date Night", "Sipra and Debashish at dinner"], ["g5", "Smiles Together", "Sipra and Debashish smiling"]
+  ["g4", "Date Night", "Sipra and Debashish at dinner"]
 ];
 (function buildGallery(){
   const stage = $("galStage"); if (!stage) return;
@@ -205,7 +208,7 @@ const GALLERY = [
   const slides = [...stage.children];
   let idx = 0, timer = null, capTimer = null;
   function render(){
-    slides.forEach((s, i) => { const off = ((i - idx + n + half) % n) - half; s.dataset.pos = off; s.style.visibility = Math.abs(off) > 2 ? "hidden" : "visible"; });
+    slides.forEach((s, i) => { let off = (i - idx + n) % n; if (off > n / 2) off -= n; s.dataset.pos = off; s.style.visibility = (Math.abs(off) > 2 || (n < 5 && Math.abs(off) > 1)) ? "hidden" : "visible"; });
     cap.classList.add("fade"); clearTimeout(capTimer);
     capTimer = setTimeout(() => { cap.textContent = GALLERY[idx][1]; cap.classList.remove("fade"); }, cap.textContent ? 180 : 0);
   }
